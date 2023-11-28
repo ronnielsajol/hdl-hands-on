@@ -1,1 +1,1 @@
-// Hands-On Activity from Hardware Description Language subject.
+# Hands-On Activity from Hardware Description Language subject.
