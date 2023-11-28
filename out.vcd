@@ -1,5 +1,5 @@
 $date
-	Wed Nov 29 00:09:29 2023
+	Wed Nov 29 01:19:31 2023
 $end
 $version
 	Icarus Verilog
@@ -9,9 +9,10 @@ $timescale
 $end
 $scope module tb $end
 $var wire 3 ! out [2:0] $end
-$var reg 3 " a [2:0] $end
-$var reg 3 # b [2:0] $end
-$var reg 3 $ opcode [2:0] $end
+$var wire 8 " hex [7:0] $end
+$var reg 3 # a [2:0] $end
+$var reg 3 $ b [2:0] $end
+$var reg 3 % opcode [2:0] $end
 $upscope $end
 $enddefinitions $end
 $comment Show the parameter values. $end
@@ -19,8 +20,9 @@ $dumpall
 $end
 #0
 $dumpvars
-b0 $
-b1 #
-b0 "
-b1 !
+b0 %
+b1 $
+b0 #
+bx "
+bz !
 $end

@@ -1,18 +1,32 @@
-module alu(out, a, b, opcode);
-  input [2:0] a, b, opcode; 
-  output [2:0] out;
+module decoder(out, i1, i2, c1, c2, c3);
+  input c1, c2, c3;
+  input wire [3:0] i1, i2;
+  output reg [3:0] out;
 
-
-  assign out = (opcode === 3'b000) ? a + b : 
-  ((opcode === 3'b001) ? a - b : 
-  ((opcode === 3'b010) ? a * b : 
-  ((opcode === 3'b011 && b !== 0) ? a / b : 
-  ((opcode === 3'b100) ? a & b : 
-  ((opcode === 3'b101) ? a | b : 
-  ((opcode === 3'b110) ? a ^ b : 
-  ((opcode === 3'b111) ? !a : 3'bzzz))))))); 
-
-
-
-
+  always @* begin
+    if (c1 == 0 && c2 == 0 && c3 == 0) begin
+      out = i1 + i2;
+    end
+    else if (c1 == 0 && c2 == 0 && c3 == 1) begin
+      out = i1 - i2;
+    end
+    else if (c1 == 0 && c2 == 1 && c3 == 0) begin
+      out = i1 * i2;
+    end
+    else if (c1 == 0 && c2 == 1 && c3 == 1) begin
+      out = i1 / i2;
+    end
+    else if (c1 == 1 && c2 == 0 && c3 == 0) begin
+      out = i1 & i2;
+    end
+    else if (c1 == 1 && c2 == 0 && c3 == 1) begin
+      out = i1 | i2;  
+    end
+    else if (c1 == 1 && c2 == 1 && c3 == 0) begin
+      out = i1 ^ i2;
+    end
+    else if (c1 == 1 && c2 == 1 && c3 == 1) begin
+      out = ~i1;
+    end
+  end
 endmodule
